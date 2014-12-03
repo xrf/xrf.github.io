@@ -98,6 +98,16 @@ blockquote {
     padding-left: 1em;
 }
 
+abbr {
+    @include transition(.3s ease);
+    color: #34405a;
+    cursor: help;
+    &:focus,
+    &:hover {
+        color: #1699dd;
+    }
+}
+
 address {
     font-style: normal;
 }
@@ -105,7 +115,7 @@ address {
 dl {
     $h-margin: 12.5em;
     $h-tmargin: 7.5em;
-    $h-gap: 2em;
+    $h-gap: 1.5em;
     $h-tgap: 1em;
     $v-padding: 1em;
     dt {
@@ -185,18 +195,18 @@ pre {
 
 a {
     @include transition(.3s ease);
-}
-a:active,
-a:link,
-a:visited {
-    color: #21ba4b;
-    text-decoration: none;
-}
-a:focus,
-a:hover {
-    color: #1699dd;
-    text-decoration: underline;
-    outline: none;
+    &:active,
+    &:link,
+    &:visited {
+        color: #21ba4b;
+        text-decoration: none;
+    }
+    &:focus,
+    &:hover {
+        color: #1699dd;
+        text-decoration: underline;
+        outline: none;
+    }
 }
 
 header.root {
