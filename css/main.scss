@@ -1,0 +1,376 @@
+/* generic fallback fonts */
+$sans-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$mono-font: "Ubuntu Mono", "Droid Sans Mono", Consolas, monospace;
+
+/* fancy fonts */
+$body-font: Oxygen, $sans-font;
+$code-font: Monaco, "Oxygen Mono", $mono-font;
+
+$page-width:  33em;                  /* max width of content (excl margins) */
+$page-margin: 1em;                   /* margin between content and viewport */
+$width-threshold: $page-width + 2 * $page-margin;
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+@mixin border-radius($args...) {
+    -moz-border-radius: $args;
+    -webkit-border-radius: $args;
+    border-radius: $args;
+}
+
+@mixin box-shadow($args...) {
+    -moz-box-shadow: $args;
+    -webkit-box-shadow: $args;
+    box-shadow: $args;
+}
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+/* ==========================================================================
+   General stuff
+   ========================================================================== */
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+    color: #222;
+    font-family: $body-font;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    font-size: 1em;
+    line-height: 1.4;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: table;
+    table-layout: fixed;          /* allows scrollable containers to shrink */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $body-font;
+    font-weight: bold;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+
+blockquote {
+    font-style: italic;
+    border-left: .2em solid #ccc;
+    margin: 0;
+    padding-left: 1em;
+}
+
+address {
+    font-style: normal;
+}
+
+dl {
+    $h-margin: 12.5em;
+    $h-tmargin: 7.5em;
+    $h-gap: 2em;
+    $h-tgap: 1em;
+    $v-padding: 1em;
+    dt {
+        clear: left;
+        float: left;
+        font-weight: bold;
+        overflow: hidden;
+        padding-top: $v-padding;
+        text-align: right;
+        text-overf‌​low: ellipsis;
+        white-space: nowrap;
+        width: $h-tmargin - $h-tgap;
+        @media only screen and (min-width: $width-threshold) {
+            width: $h-margin - $h-gap;
+        }
+    }
+    dd {
+        padding-top: $v-padding;
+        /* needed to prevent cramping when screen is too narrow */
+        margin-right: 1.5em;
+        margin-left: $h-tmargin;
+        @media only screen and (min-width: $width-threshold) {
+            margin-left: $h-margin;
+        }
+    }
+    &.flat {
+        dt {
+            float: none;
+            text-align: inherit;
+        }
+        dd {
+            margin-top: .3em;
+            margin-left: 0;
+            padding: 0;
+        }
+    }
+}
+
+code,
+pre,
+samp {
+    font-family: $code-font;
+}
+code,
+samp {
+    font-size: 75%;
+    padding: .08em .2em;
+    white-space: nowrap;
+    @include border-radius(.2em);
+}
+code {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+}
+samp {
+    color: #f7f7f7;
+    background-color: #394046;
+    border: 1px solid #000;
+}
+pre {
+    word-wrap: normal;
+    code,
+    samp {
+        padding: .5em .5em;
+        display: block;
+        overflow: auto;
+        white-space: pre;
+    }
+}
+
+@mixin selection() {
+    background: #a9ecff;
+    text-shadow: none;
+}
+::-moz-selection { @include selection(); }
+::selection { @include selection(); }
+
+a {
+    @include transition(.3s ease);
+}
+a:active,
+a:link,
+a:visited {
+    color: #21ba4b;
+    text-decoration: none;
+}
+a:focus,
+a:hover {
+    color: #1699dd;
+    text-decoration: underline;
+    outline: none;
+}
+
+header.root {
+    background-color: #eff6ef;
+    background-color: #5ce26b;
+    color: rgba(255, 255, 255, .92);
+    h1 {
+        margin-top: 0;
+        padding: .5em 0;
+        text-align: center;
+        /* text-shadow: 0 .0em .05em rgba(0, 0, 0, .4); */
+    }
+}
+
+.content {
+    @media only screen and (min-width: $width-threshold) {
+        width: $page-width;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.meta {
+    color: #777;
+    font-size: smaller;
+}
+
+.unicode-name {
+    text-transform: lowercase;
+    font-variant: small-caps;
+}
+
+.segment {
+    & + & {
+        margin-left: .1em;
+    }
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.clearfix:after,
+.clearfix:before {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    @page {
+        margin: $page-margin;
+    }
+
+    * {
+        background: transparent !important;
+        color: #000 !important;         /* black prints faster: h5bp.com/s */
+        @include box-shadow(none !important);
+        text-shadow: none !important;
+    }
+
+    a:link,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    header.root {
+        a[href]:after {
+            content: none;
+        }
+    }
+
+    /* don't show links for images, or javascript/internal links */
+    .ir a:after,
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after,
+    a.hide:after {
+        content: "";
+    }
+
+    blockquote,
+    pre {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;    /* h5bp.com/t */
+    }
+
+    img,
+    tr {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        page-break-after: avoid;
+    }
+}
