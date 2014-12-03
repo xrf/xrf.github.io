@@ -51,12 +51,16 @@ textarea {
 
 html,
 body {
-    font-size: 1em;
     line-height: 1.4;
     height: 100%;
     width: 100%;
+    min-width: 14em;
     padding: 0;
     margin: 0;
+    font-size: 100%;
+    @media only screen and (max-width: 320px) {
+        font-size: 75%;
+    }
 }
 
 body {
@@ -115,9 +119,12 @@ address {
 dl {
     $h-margin: 12.5em;
     $h-tmargin: 7.5em;
+    $h-ttmargin: 6.5em;
     $h-gap: 1.5em;
     $h-tgap: 1em;
+    $h-ttgap: .5em;
     $v-padding: 1em;
+    $v-ttpadding: .5em;
     dt {
         clear: left;
         float: left;
@@ -131,6 +138,10 @@ dl {
         @media only screen and (min-width: $width-threshold) {
             width: $h-margin - $h-gap;
         }
+        @media only screen and (max-width: 320px) {
+            padding-top: $v-ttpadding;
+            width: $h-ttmargin - $h-ttgap;
+        }
     }
     dd {
         padding-top: $v-padding;
@@ -139,6 +150,10 @@ dl {
         margin-left: $h-tmargin;
         @media only screen and (min-width: $width-threshold) {
             margin-left: $h-margin;
+        }
+        @media only screen and (max-width: 320px) {
+            padding-top: $v-ttpadding;
+            margin-left: $h-ttmargin;
         }
     }
     &.flat {
@@ -217,7 +232,9 @@ header.root {
         margin-top: 0;
         padding: .5em 0;
         text-align: center;
-        /* text-shadow: 0 .0em .05em rgba(0, 0, 0, .4); */
+        @media only screen and (min-width: $width-threshold) {
+            font-size: 250%;
+        }
     }
 }
 
@@ -226,6 +243,9 @@ header.root {
         width: $page-width;
         margin-left: auto;
         margin-right: auto;
+        @media only screen and (min-width: $width-threshold * 1.2) {
+            font-size: 120%;
+        }
     }
 }
 
