@@ -6,8 +6,7 @@ help:
 build: sass
 
 deploy: build
-	cp index.html ../../www/
-	cp css/main.css ../../www/css/
+	rsync -R index.html css/main.css fishtank:public_html
 
 sass:
-	@sass --update -t compressed --sourcemap=none css/*.scss
+	sass --update -t compressed --sourcemap=none css/*.scss

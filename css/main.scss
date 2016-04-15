@@ -213,21 +213,20 @@ a {
     &:active,
     &:link,
     &:visited {
-        color: #21ba4b;
+        color: #3aa827;
         text-decoration: none;
     }
     &:focus,
     &:hover {
-        color: #1699dd;
+        color: #6ecf5d;
         text-decoration: underline;
         outline: none;
     }
 }
 
 header.root {
-    background-color: #eff6ef;
-    background-color: #5ce26b;
-    color: rgba(255, 255, 255, .92);
+    background-color: #4ebd2e;
+    color: #fff;
     h1 {
         margin-top: 0;
         padding: .5em 0;
