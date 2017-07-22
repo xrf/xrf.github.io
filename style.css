@@ -1,0 +1,89 @@
+p, pre, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 750px;
+    color: #222;
+    font-family: "Droid Sans", Helvetica, sans;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0 25px;
+    padding: 0;
+}
+
+code {
+    font-family: "Droid Mono", monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 180%;
+}
+
+h2 {
+    margin-top: 30px;
+    border-bottom: 1px solid #6bad4f;
+    color: #6bad4f;
+    font-size: 115%;
+}
+
+@media print {
+    h2 {
+        background-color: #fff;
+        border-bottom: 1px solid;
+        color: #000;
+    }
+}
+
+header {
+    margin: 25px 0;
+    text-align: center;
+}
+
+header p, header address {
+    font-size: 70%;
+    margin-bottom: 0;
+    font-style: normal;
+}
+
+.subtitle {
+    font-size: 70%;
+    color: #777;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    overflow-wrap: break-word;
+}
+
+a:link, a:visited, a:active {
+    color: #339310;
+}
+
+a:hover {
+    color: #7ba834;
+}
+
+li {
+    margin-top: 10px;
+}
+
+.segment + .segment {
+    margin-left: 5px;
+}
+
+dt {
+    font-weight: bold;
+}

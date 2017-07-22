@@ -1,12 +1,4 @@
-help:
-	@echo "Targets:"
-	@echo "  build:   build site"
-	@echo "  deploy:  upload site"
-
-build: sass
+build:
 
 deploy: build
-	rsync -R index.html css/main.css fishtank:public_html
-
-sass:
-	sass --update -t compressed --sourcemap=none css/*.scss
+	rsync -R index.html style.css fishtank:public_html
